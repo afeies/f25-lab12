@@ -18,3 +18,11 @@ Q4 is violated because the moethod assumes a fixe libraryID:userName string form
 
 ### Solution
 Define and throw a InvalidUserIdException so the API fails fast and communicates exactly what went wrong instead of crashing with unclear runtime errors.
+
+## Weather
+
+### Problem
+U2 is violated because the behavior is inconsistent with its own documentation. Also, the API uses a boolean flag (inches) whose meaning is unclear, making it difficult for callers to understand which unit is being selected.
+
+### Solution
+Replace the boolean with a LengthScale enum to make the chosen unit explicit. Also, update the documentation to specify that WeatherService returns millimeters. This makes the API easier to use correctly.
