@@ -10,3 +10,11 @@ Q4 is violated because the API returns integer error codes instead of throwing e
 
 ### Solution
 Define custom exception classes and throw them in place of integer error codes so the method fails fast rather than silently returing status values.
+
+## Library
+
+### Problem
+Q4 is violated because the moethod assumes a fixe libraryID:userName string format and indexes into the split parts, causing crashes instead of failing fast with an error.
+
+### Solution
+Define and throw a InvalidUserIdException so the API fails fast and communicates exactly what went wrong instead of crashing with unclear runtime errors.

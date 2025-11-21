@@ -11,9 +11,18 @@ public class LibraryAccount {
      *
      * @param userId the ID of the user whose books are to be retrieved
      * @return an array of Book objects the user has checked out
+     * 
+     * @throws InvalidUserIDException if the userId does not contain exactly
+     * one ":" seperating the library ID and the user name
      */
-    public Book[] getBooks(String userId) {
+    public Book[] getBooks(String userId) throws InvalidUserIDException {
         String[] parts = userId.split(":");
+
+        // check format, it must be "libraryID:userName"
+        if (parts.length != 2) {
+            throw new InvalidUserIDException(userId);
+        }
+
         String name = parts[0];
         String id = parts[1];
         return libraryService.getBooks(name, id);        
